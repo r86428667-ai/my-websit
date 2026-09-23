@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GeeuDev Premium Intro</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:#02050d;
+    font-family:Arial, sans-serif;
+}
+
+/* MAIN VIDEO SCREEN */
+.scene{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at center,#071b35 0%,#02050d 55%,#000 100%);
+}
+
+/* BLUE LIGHT */
+.blue-light{
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:#008cff;
+    filter:blur(120px);
+    opacity:.35;
+    left:-180px;
+    top:20%;
+    animation:blueMove 6s infinite alternate;
+}
+
+/* GOLD LIGHT */
+.gold-light{
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:#ff9d00;
+    filter:blur(120px);
+    opacity:.3;
+    right:-180px;
+    top:20%;
+    animation:goldMove 6s infinite alternate;
+}
+
+@keyframes blueMove{
+    from{transform:translateX(0);}
+    to{transform:translateX(250px);}
+}
+
+@keyframes goldMove{
+    from{transform:translateX(0);}
+    to{transform:translateX(-250px);}
+}
+
+/* PARTICLES */
+.particles{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 12px #00bfff;
+    animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-20vh);
+        opacity:0;
+    }
+}
+
+/* CENTER */
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    width:100%;
+}
+
+/* ROTATING RING */
+.ring{
+    width:310px;
+    height:310px;
+    border-radius:50%;
+    border:3px solid transparent;
+    border-top-color:#00aaff;
+    border-right-color:#ff9d00;
+    box-shadow:
+        0 0 20px #00aaff,
+        inset 0 0 20px #ff9d00;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    animation:rotate 4s linear infinite;
+}
+
+@keyframes rotate{
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+/* LOGO */
+.logo{
+    position:relative;
+    z-index:2;
+    font-size:75px;
+    font-weight:900;
+    letter-spacing:5px;
+
+    background:linear-gradient(
+        90deg,
+        #00d9ff,
+        #fff,
+        #ffae00
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    text-shadow:
+        0 0 20px #00aaff,
+        0 0 40px #008cff;
+
+    animation:logoIn 2s ease forwards;
+}
+
+@keyframes logoIn{
+    from{
+        opacity:0;
+        transform:scale(.3);
+        filter:blur(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+    }
+}
+
+/* TAGLINE */
+.tagline{
+    margin-top:18px;
+    color:white;
+    font-size:19px;
+    letter-spacing:3px;
+    opacity:0;
+    animation:tagIn 1.5s ease forwards;
+    animation-delay:1.5s;
+}
+
+@keyframes tagIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* LINE */
+.line{
+    width:0;
+    height:2px;
+    margin:25px auto;
+    background:linear-gradient(
+        90deg,
+        #00c6ff,
+        #fff,
+        #ff9900
+    );
+
+    box-shadow:0 0 15px #00c6ff;
+
+    animation:lineIn 1.5s ease forwards;
+    animation-delay:2s;
+}
+
+@keyframes lineIn{
+    to{
+        width:420px;
+    }
+}
+
+/* SERVICES */
+.services{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    margin-top:25px;
+    opacity:0;
+    animation:servicesIn 1.5s ease forwards;
+    animation-delay:2.5s;
+}
+
+.service{
+    color:white;
+    font-size:14px;
+    padding:10px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 15px rgba(0,180,255,.2);
+}
+
+.service span{
+    display:block;
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+@keyframes servicesIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* BOTTOM */
+.bottom{
+    position:absolute;
+    bottom:30px;
+    width:100%;
+    text-align:center;
+    color:#aaa;
+    letter-spacing:4px;
+    font-size:12px;
+
+    animation:bottomGlow 2s infinite alternate;
+}
+
+@keyframes bottomGlow{
+    from{opacity:.4;}
+    to{opacity:1;}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .logo{
+        font-size:45px;
+    }
+
+    .ring{
+        width:220px;
+        height:220px;
+    }
+
+    .tagline{
+        font-size:12px;
+        padding:0 20px;
+    }
+
+    .line{
+        max-width:280px;
+    }
+
+    .services{
+        gap:6px;
+        flex-wrap:wrap;
+        padding:0 15px;
+    }
+
+    .service{
+        font-size:10px;
+    }
+
+    .service span{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="blue-light"></div>
+    <div class="gold-light"></div>
+
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <div class="center">
+
+        <div class="ring"></div>
+
+        <div class="logo">
+            GeeuDev
+        </div>
+
+        <div class="tagline">
+            Trusted Platform | Professional Service | Digital Growth
+        </div>
+
+        <div class="line"></div>
+
+        <div class="services">
+
+            <div class="service">
+                <span>💻</span>
+                Digital Service
+            </div>
+
+            <div class="service">
+                <span>📈</span>
+                Promotion
+            </div>
+
+            <div class="service">
+                <span>💼</span>
+                Business
+            </div>
+
+            <div class="service">
+                <span>🛒</span>
+                Online Shop
+            </div>
+
+            <div class="service">
+                <span>⭐</span>
+                Brand
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        YOUR SUCCESS • OUR MISSION
+    </div>
+
+</div>
+
+
+<script>
+
+/* CREATE PARTICLES */
+
+const particles =
+document.getElementById("particles");
+
+for(let i=0;i<80;i++){
+
+    let p =
+    document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left =
+    Math.random()*100+"%";
+
+    p.style.animationDuration =
+    (3+Math.random()*6)+"s";
+
+    p.style.animationDelay =
+    Math.random()*5+"s";
+
+    p.style.opacity =
+    Math.random();
+
+    particles.appendChild(p);
+}
+
+
+/* RESTART ANIMATION EVERY 8 SECONDS */
+
+setInterval(()=>{
+
+    document.querySelector(".logo")
+    .style.animation="none";
+
+    document.querySelector(".tagline")
+    .style.animation="none";
+
+    document.querySelector(".line")
+    .style.animation="none";
+
+    document.querySelector(".services")
+    .style.animation="none";
+
+    void document.body.offsetWidth;
+
+    document.querySelector(".logo")
+    .style.animation="logoIn 2s ease forwards";
+
+    document.querySelector(".tagline")
+    .style.animation=
+    "tagIn 1.5s ease forwards";
+
+    document.querySelector(".tagline")
+    .style.animationDelay="1.5s";
+
+    document.querySelector(".line")
+    .style.animation=
+    "lineIn 1.5s ease forwards";
+
+    document.querySelector(".line")
+    .style.animationDelay="2s";
+
+    document.querySelector(".services")
+    .style.animation=
+    "servicesIn 1.5s ease forwards";
+
+    document.querySelector(".services")
+    .style.animationDelay="2.5s";
+
+},8000);
+
+</script>
+
+</body>
+</html>
